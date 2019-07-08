@@ -30,6 +30,10 @@
 
   .mat-drawer-content {
     padding: 2rem;
+
+    button.close {
+      margin-bottom: 1rem;
+    }
   }
 
   .mat-drawer-content.mobile {

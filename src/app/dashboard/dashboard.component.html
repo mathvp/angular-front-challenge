@@ -3,7 +3,7 @@
   <mat-drawer #drawer mode="side" opened [class.mobile]="(isHandset$ | async)">
     <mat-nav-list>
       <mat-list-item *ngFor="let message of messages">
-        <a matLine (click)="showMessage(message.id)">
+        <a matLine (click)="showMessage(message.id, drawer)">
           <span class="title">{{message.title}}</span>
           <small>{{ message.createdAt | date: format }}</small>
         </a>
@@ -12,7 +12,9 @@
   </mat-drawer>
 
   <mat-drawer-content [class.mobile]="(isHandset$ | async)">
-    <mat-icon *ngIf="(isHandset$ | async)" (click)="drawer.open()">close</mat-icon>
+    <button *ngIf="(isHandset$ | async)" mat-raised-button color="primary" aria-label="Voltar" (click)="drawer.open()" class="close">
+      <mat-icon >arrow_left</mat-icon> Voltar
+    </button>
     <app-message [currentMessage]="currentMessage" (currentMessageChange)="ngOnInit()"></app-message>
   </mat-drawer-content>
 
