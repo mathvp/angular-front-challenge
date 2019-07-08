@@ -1,0 +1,40 @@
+.dashboard-container {
+  height: 100%;
+
+  .mat-drawer {
+    width: 250px;
+  }
+
+  .mat-drawer.mobile {
+    width: 100%;
+  }
+
+  .mat-drawer-content {
+    padding: 2rem;
+
+    .mat-card {
+
+      .mat-card-content {
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+      }
+
+      .mat-card-actions {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem;
+      }
+
+    }
+
+  }
+
+  .mat-drawer-content.mobile {
+    padding: 1rem;
+
+    .mat-card {
+      padding: 1rem 0;
+    }
+  }
+
+}
