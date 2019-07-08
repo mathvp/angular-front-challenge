@@ -2,36 +2,18 @@
 
   <mat-drawer #drawer mode="side" opened [class.mobile]="(isHandset$ | async)">
     <mat-nav-list>
-      <mat-list-item>
-        <a matLine (click)="drawer.close()">Item 1</a>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <a matLine (click)="drawer.close()">Item 2</a>
+      <mat-list-item *ngFor="let message of messages">
+        <a matLine (click)="showMessage(message.id)">
+          <span class="title">{{message.title}}</span>
+          <small>{{ message.createdAt | date: format }}</small>
+        </a>
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
 
   <mat-drawer-content [class.mobile]="(isHandset$ | async)">
     <mat-icon *ngIf="(isHandset$ | async)" (click)="drawer.open()">close</mat-icon>
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Título da Mensagem</mat-card-title>
-        <mat-card-subtitle>Hora de cadastro</mat-card-subtitle>
-        <mat-card-subtitle>Assunto da Mensagem</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet sem interdum, lacinia erat id, fringilla erat. Etiam velit ligula, sagittis non magna consequat, placerat faucibus dui. Phasellus molestie odio id dolor facilisis, sit amet gravida enim sagittis. Cras ipsum erat, rutrum ut ex et, iaculis fringilla risus. Nullam est libero, posuere quis luctus vel, commodo a leo. Aenean ligula arcu, ullamcorper quis nunc non, sagittis aliquet massa. Praesent consectetur mi purus, sed vulputate orci elementum id
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="warn">
-          <mat-icon>delete</mat-icon>
-          Apagar mensagem
-        </button>
-      </mat-card-actions>
-    </mat-card>
+    <app-message [currentMessage]="currentMessage" (currentMessageChange)="ngOnInit()"></app-message>
   </mat-drawer-content>
 
 </mat-drawer-container>

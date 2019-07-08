@@ -20,17 +20,24 @@ export class DashboardComponent implements OnInit {
     );
 
   messages: Message[];
+  currentMessage: number;
 
-  constructor(private breakpointObserver: BreakpointObserver, private messagesService: MessagesService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private messagesService: MessagesService) {
+    this.currentMessage = 1;
+  }
 
   ngOnInit() {
     this.getMessages();
-    console.log(this.messages);
   }
 
   getMessages() {
-    this.messagesService.getMessage()
+    this.messagesService.getMessages()
         .subscribe(data => this.messages = data);
+    this.showMessage(this.messages[0].id)
+  }
+
+  showMessage(messageId: number) {
+    this.currentMessage = messageId;
   }
 
 }

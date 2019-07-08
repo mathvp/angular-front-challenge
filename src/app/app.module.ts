@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MessageFormComponent } from './message-form/message-form.component';
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MessageFormComponent } from './message-form/message-form.component';
     NavbarComponent,
     DashboardComponent,
     MessageFormComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

@@ -36,7 +36,7 @@ export class MessageFormComponent implements OnInit{
   }
 
   getSubject() {
-    this.subjectsService.getSubject()
+    this.subjectsService.getSubjects()
         .subscribe(data => this.subjects = data);
   }
 

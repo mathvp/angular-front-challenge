@@ -1,0 +1,18 @@
+<mat-card *ngIf="message">
+  <mat-card-header>
+    <mat-card-title>{{message.title}}</mat-card-title>
+    <mat-card-subtitle>
+      {{ message.createdAt | date: format }}
+    </mat-card-subtitle>
+    <mat-card-subtitle>{{subject.title}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{message.message}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button align="end" color="warn" (click)="deleteMessage()">
+      <mat-icon>delete</mat-icon>
+      Apagar mensagem
+    </button>
+  </mat-card-actions>
+</mat-card>
