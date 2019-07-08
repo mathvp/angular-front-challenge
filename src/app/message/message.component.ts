@@ -3,7 +3,6 @@ import { Message } from '../message';
 import { MessagesService } from '../messages.service';
 import { SubjectsService } from '../subjects.service';
 import { Subject } from '../subject';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-message',
@@ -20,7 +19,6 @@ export class MessageComponent implements OnInit, OnChanges {
   constructor(
     private messagesService: MessagesService,
     private subjectsService: SubjectsService,
-    private router: Router
   ) { }
 
   ngOnChanges(changes: SimpleChanges) {

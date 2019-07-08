@@ -2,24 +2,47 @@
   <form id="new-message-form" [formGroup]="messageForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input matInput placeholder="Nome" formControlName="name">
-      <mat-error>Erro</mat-error>
+      <mat-error *ngIf="f.name.hasError('required')">
+        Esse campo é <strong>obrigatório</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Email" formControlName="email">
+      <input matInput placeholder="Email" formControlName="email" >
+      <mat-error *ngIf="f.email.hasError('email') && !f.email.hasError('required')">
+        Insira um email válido
+      </mat-error>
+      <mat-error *ngIf="f.email.hasError('required')">
+        Esse campo é <strong>obrigatório</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Telefone" formControlName="phone">
+      <mat-error *ngIf="f.phone.hasError('pattern')">
+        Insira apenas números
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="Assunto" formControlName="subject">
+      <mat-select placeholder="Assunto" formControlName="subjectId">
         <mat-option *ngFor="let subject of subjects" [value]="subject.id">
           {{subject.title}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="f.subjectId.hasError('required')">
+        Esse campo é <strong>obrigatório</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput placeholder="Mensagem" formControlName="message"></textarea>
-      <mat-hint align="end">0/500</mat-hint>
+      <input matInput placeholder="Título" formControlName="title">
+      <mat-error *ngIf="f.title.hasError('required')">
+        Esse campo é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Mensagem" #message maxlength="500" formControlName="message"></textarea>
+      <mat-hint align="end">{{message.value.length}} /500</mat-hint>
+      <mat-error *ngIf="f.message.hasError('required')">
+        Esse campo é <strong>obrigatório</strong>
+      </mat-error>
     </mat-form-field>
     <div class="form-actions">
       <button mat-raised-button color="primary">Enviar</button>
